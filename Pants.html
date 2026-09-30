@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SETEC | Trendsetting Outfits</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="LOGO.png" type="image/x-icon">
+    <style>
+        body {
+            background-color: rgb(86, 88, 95);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #ffffff;
+            padding: 20px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            max-width: 1200px;
+            margin: 15px auto;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .nav-brand {
+            font-family: 'Forte', cursive;
+            font-size: 50px;
+            font-weight: 700;
+            color: #333;
+            margin-left: 24px;
+            align-self: center;
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            margin: 0 0 0 auto;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            display: block;
+            text-align: center;
+            align-items: right;
+        }
+
+        .language-note {
+            margin: 12px auto 0;
+            text-align: center;
+            font-size: 16px;
+            color: #333;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 8px 16px;
+            border-radius: 10px;
+            max-width: 220px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+        .category-filters {
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .category-filters a {
+            text-decoration: none;
+            color: #ff0000;
+            font-weight: 100;
+            font-family: "Bauhaus 93";
+            padding: 10px 16px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+            width: 95px;
+            text-align: center;
+        }
+
+        .category-filters a:nth-child(1) {
+            background-color: #FF6B6B;
+            border-color: #FF5252;
+            color: white;
+            pointer-events: none;
+        }
+
+        .category-filters a:nth-child(2) {
+            background-color: #FF6B6B;
+            border-color: #FF5252;
+            color: white;
+            pointer-events: none;
+            width: 60px;
+            padding: 8px 12px;
+            font-size: 14px;
+        }
+
+        .category-filters a:nth-child(3) {
+            background-color: #FF6B6B;
+            border-color: #FF5252;
+            color: white;
+            pointer-events: none;
+        }
+
+        .category-filters a:hover {
+            background-color: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 16px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-right li {
+            margin: 0;
+        }
+
+        .nav-right a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            display: block;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .language-switch {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 12px;
+            padding: 6px 10px;
+            border: 1px solid #ddd;
+            border-radius: 999px;
+            background: #f7f7f7;
+        }
+
+        .language-switch a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .language-switch .active {
+            color: #ff5252;
+        }
+
+        .navbar-right-section {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .boxes-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            max-width: 1200px;
+            margin: 16px auto;
+            padding: 0 24px;
+        }
+
+        .box {
+            background: red;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .box h3 {
+            margin: 0 0 8px 0;
+            font-size: 18px;
+        }
+
+        .box p {
+            margin: 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .body-boxes-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            max-width: 1200px;
+            margin: 24px auto 32px;
+            padding: 0 24px;
+        }
+
+        .body-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+            color: #111;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .body-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+        }
+
+        .body-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .body-box img.fixed-size {
+            width: 248px;
+            height: 309.08px;
+            object-fit: cover;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .body-box h3 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-family: 'Showcard Gothic', sans-serif;
+            color: #111;
+        }
+
+        .body-box p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.4;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            opacity: 0.85;
+            color: #444;
+        }
+
+        .body-box .footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .body-box .price-tag {
+            font-size: 16px;
+            font-weight: 700;
+            color: #111;
+        }
+
+        .body-box .buy-btn {
+            border: none;
+            background: #ff5252;
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s ease;
+        }
+
+        .body-box .buy-btn:hover {
+            background: #ff3b3b;
+        }
+
+    </style> 
+</head>
+<body>
+    <!-- <a href="">T-shirt</a> -->
+
+    <header>
+        <nav class="navbar">
+             <div class="logo">
+                <a href="Body.html">
+                    <img src="LOGO.png" alt="Logo">
+                </a>
+            </div>
+            <div class="nav-brand">Hev Style</div>
+            <div class="navbar-right-section">
+                <div class="category-filters">
+                    <a href="#men">KDMV</a>
+                    <a href="#and">And</a>
+                    <a href="#women">Ahsora World</a>
+                </div>
+                <ul class="nav-right">
+                    <li><a href="Body.html">Home</a></li>
+                    <li><a href="Story.html">Our Story</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                </ul>
+                <div class="language-switch">
+                    <a href="Body.html" class="active">ENG</a>
+                    <a href="Project-KH.html">KH</a>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- 4 Boxes Section -->
+         <div class="boxes-container">
+            <div class="box">
+                <a href="T-shirt.html" style="font-family:Showcard Gothic; font-weight: 1px; color: inherit; text-decoration: none; display: block;">
+                    <h3 style="margin: 0 0 8px 0; font-size: 18px; font-family: 'Kh MPS Jrung';">T-Shirt</h3>
+                    <p style="font-family:Khmer OS Muol Light; font-weight: 1px;">Perfect for everyday wear</p>
+                </a>
+            </div>
+            <div class="box">
+                <!-- <h3 style="font-family:Showcard Gothic; font-weight: 1px;">Hoodie</h3> -->
+                 <a href="Hoodie.html" style="font-family:Showcard Gothic; font-weight: 1px; color: inherit; text-decoration: none; display: block;">
+                <h3 style="margin: 0 0 8px 0; font-size: 18px; font-family: 'Kh MPS Jrung';">Hoodie</h3>
+                <p style="font-family:Khmer OS Muol Light; font-weight: 1px;">Cozy and stylish</p>
+                </a>
+            </div>
+            <div class="box">
+                <a href="Pants.html" style="font-family:Showcard Gothic; font-weight: 1px; color: inherit; text-decoration: none; display: block;">
+                    <h3 style="margin: 0 0 8px 0; font-size: 18px; font-family: 'Kh MPS Jrung';">Pants</h3>
+                    <p style="font-family:Khmer OS Muol Light; font-weight: 1px;">Comfortable and fashionable</p>
+                </a>
+            </div>
+            <div class="box">
+                <a href="Shoes.html" style="font-family:Showcard Gothic; font-weight: 1px; color: inherit; text-decoration: none; display: block;">
+                <h3 style="margin: 0 0 8px 0; font-size: 18px; font-family: 'Kh MPS Jrung';">Shoes</h3>
+                <p style="font-family:Khmer OS Muol Light; font-weight: 1px;">Stylish and durable</p>
+                </a>
+            </div>
+        </div>
+
+        <div class="body-boxes-container">
+            <div class="body-box">
+                <img src="Brand/KDMV/P.1.webp" alt="P.1" class="fixed-size">
+                <h3 style="font-family: 'Kh MPS Jrung';">P.1</h3>
+                <div class="footer"><span class="price-tag">$20</span><button type="button" class="buy-btn">Buy</button></div>
+            </div>
+            <div class="body-box">
+                <img src="Brand/KDMV/P.2.jpg" alt="P.2" class="fixed-size">
+                <h3 style="font-family: 'Kh MPS Jrung';">P.2</h3>
+                <div class="footer"><span class="price-tag">$20</span><button type="button" class="buy-btn">Buy</button></div>
+            </div>
+            <div class="body-box">
+                <img src="Brand/KDMV/P.3.webp" alt="P.3" class="fixed-size">
+                <h3 style="font-family: 'Kh MPS Jrung';">P.3</h3>
+                <div class="footer"><span class="price-tag">$30</span><button type="button" class="buy-btn">Buy</button></div>
+            </div>
+            <div class="body-box">
+                <img src="Brand/KDMV/P.4.webp" alt="P.4" class="fixed-size">
+                <h3 style="font-family: 'Kh MPS Jrung';">P.4</h3>
+                <div class="footer"><span class="price-tag">$30</span><button type="button" class="buy-btn">Buy</button></div>
+            </div>
+        </div>
+
+        <div class="body-boxes-container">
+            <div class="body-box">
+                <img src="Brand/KDMV/P.5.jpg" alt="P.5" class="fixed-size">
+                <h3 style="font-family: 'Kh MPS Jrung';">P.5</h3>
+                <div class="footer"><span class="price-tag">$20</span><button type="button" class="buy-btn">Buy</button></div>
+            </div>
+            <div class="body-box">
+                <img src="Brand/KDMV/P.6.jpg" alt="P.6" class="fixed-size">
+                <h3 style="font-family: 'Kh MPS Jrung';">P.6</h3>
+                <div class="footer"><span class="price-tag">$20</span><button type="button" class="buy-btn">Buy</button></div>
+            </div>
+            <div class="body-box">
+                <img src="Brand/KDMV/P.7.jpg" alt="P.7" class="fixed-size">
+                <h3 style="font-family: 'Kh MPS Jrung';">P.7</h3>
+                <div class="footer"><span class="price-tag">$30</span><button type="button" class="buy-btn">Buy</button></div>
+            </div>
+            <div class="body-box">
+                <img src="Brand/KDMV/P.8.jpg" alt="P.8" class="fixed-size">
+                <h3 style="font-family: 'Kh MPS Jrung';">P.8</h3>
+                <div class="footer"><span class="price-tag">$30</span><button type="button" class="buy-btn">Buy</button></div>
+            </div>
+        </div>
+
+         <div class="body-boxes-container">
+            <div class="body-box">
+                <img src="Brand/KDMV/P.9.jpg" alt="P.9" class="fixed-size">
+                <h3 style="font-family: 'Kh MPS Jrung';">P.9</h3>
+                <div class="footer"><span class="price-tag">$20</span><button type="button" class="buy-btn">Buy</button></div>
+            </div>
+            <div class="body-box">
+                <img src="Brand/KDMV/P.10.jpg" alt="P.10" class="fixed-size">
+                <h3 style="font-family: 'Kh MPS Jrung';">P.10</h3>
+                <div class="footer"><span class="price-tag">$20</span><button type="button" class="buy-btn">Buy</button></div>
+            </div>
+            <div class="body-box">
+                <img src="Brand/KDMV/P.11.jpg" alt="P.11" class="fixed-size">
+                <h3 style="font-family: 'Kh MPS Jrung';">P.11</h3>
+                <div class="footer"><span class="price-tag">$30</span><button type="button" class="buy-btn">Buy</button></div>
+            </div>
+            <div class="body-box">
+                <img src="Brand/KDMV/P.12.jpg" alt="P.12" class="fixed-size">
+                <h3 style="font-family: 'Kh MPS Jrung';">P.12</h3>
+                <div class="footer"><span class="price-tag">$30</span><button type="button" class="buy-btn">Buy</button></div>
+            </div>
+        </div>
+    </header>
+</body>
+</html>
